@@ -1,0 +1,10 @@
+FROM supabase/postgres:14.1.0.105
+
+LABEL maintainer="your-email@example.com"
+
+ENV POSTGRES_HOST=/var/run/postgresql
+ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+
+VOLUME ./dev/postgres:/docker-entrypoint-initdb.d/
+
+CMD ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
